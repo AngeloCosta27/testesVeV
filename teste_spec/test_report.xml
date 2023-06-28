@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="rspec" tests="1" skipped="0" failures="0" errors="0" time="9.912518" timestamp="2023-06-28T15:05:02-03:00" hostname="pc-travou">
-<properties>
-<property name="seed" value="8849"/>
-</properties>
-<testcase classname="tc03_AddTariffPlan" name="Teste de preenchimento de campo Preencher os campos obrigatórios com caracteres" file="./tc03_AddTariffPlan.rb" time="9.910437"></testcase>
-</testsuite>
