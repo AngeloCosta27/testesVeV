@@ -9,7 +9,7 @@ end
 Capybara.default_driver = :selenium
 
 RSpec.configure do |config|
-  config.add_formatter("RSpecJUnitFormatter", "test_report.xml")
+  config.add_formatter("RSpecJUnitFormatter", "test2_report.xml")
 end
 
 RSpec.describe "Teste de Adicionar Plano Personalizado", type: :feature do
@@ -30,7 +30,7 @@ RSpec.describe "Teste de Adicionar Plano Personalizado", type: :feature do
 
     expect(page).to have_content("Congratulation you add Tariff Plan")
 
-    click_link("Home", match: :first, count: 2)
+    click_link("Home", match: :first, count: 3)
     sleep (5)
   end
 
@@ -83,7 +83,7 @@ RSpec.describe "Teste de Adicionar Plano Personalizado", type: :feature do
 
     expect(page).to have_content("Congratulation you add Tariff Plan")
 
-    click_link("Home", match: :first, count: 2)
+    click_link("Home", match: :first, count: 3)
     sleep(5)
 
     puts "Máximo de caracteres permitidos:"
@@ -104,5 +104,36 @@ RSpec.describe "Teste de Adicionar Plano Personalizado", type: :feature do
     else
       fail "Teste falhou."
     end
+  end
+
+  it "Preencher os espaços com valores negativos" do
+    visit "https://demo.guru99.com/telecom/index.html"
+    expect(page).to have_content("Add Tariff Plan")
+    click_link "Add Tariff Plan"
+    initial_values = {
+      "Monthly Rental" => find_field("Monthly Rental").value,
+      "Free Local Minutes" => find_field("Free Local Minutes").value,
+      "Free International Minutes" => find_field("Free International Minutes").value,
+      "Free SMS Pack" => find_field("Free SMS Pack").value,
+      "Local Per Minutes Charges" => find_field("Local Per Minutes Charges").value,
+      "Inter. Per Minutes Charges" => find_field("Inter. Per Minutes Charges").value,
+      "SMS Per Charges" => find_field("SMS Per Charges").value,
+    }
+
+    fill_in "Monthly Rental", with: "-2"
+    fill_in "Free Local Minutes", with: "-43"
+    fill_in "Free International Minutes", with: "-47"
+    fill_in "Free SMS Pack", with: "-30"
+    fill_in "Local Per Minutes Charges", with: "-3"
+    fill_in "Inter. Per Minutes Charges", with: "-3"
+    fill_in "SMS Per Charges", with: "-5"
+
+    expect(find_field("Monthly Rental").value).to be >= 0
+    expect(find_field("Free Local Minutes").value).to be >= 0
+    expect(find_field("Free International Minutes").value).to be >= 0
+    expect(find_field("Free SMS Pack").value).to be >= 0
+    expect(find_field("Local Per Minutes Charges").value).to be >= 0
+    expect(find_field("Inter. Per Minutes Charges").value).to be >= 0
+    expect(find_field("SMS Per Charges").value).to be >= 0
   end
 end

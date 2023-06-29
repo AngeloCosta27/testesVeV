@@ -9,7 +9,7 @@ end
 Capybara.default_driver = :selenium
 
 RSpec.configure do |config|
-  config.add_formatter("RSpecJUnitFormatter", "test_report.xml")
+  config.add_formatter("RSpecJUnitFormatter", "test1_report.xml")
 end
 
 RSpec.describe "Testes de Adicionar Cliente", type: :feature do

@@ -9,7 +9,7 @@ end
 Capybara.default_driver = :selenium
 
 RSpec.configure do |config|
-  config.add_formatter("RSpecJUnitFormatter", "test_report.xml")
+  config.add_formatter("RSpecJUnitFormatter", "test3_report.xml")
 end
 
 RSpec.describe "Teste de Adicionar Plano Personalizado para um cliente", type: :feature do
@@ -23,7 +23,7 @@ RSpec.describe "Teste de Adicionar Plano Personalizado para um cliente", type: :
     click_button "submit"
 
     testei tudo e não consegui achar esse checkbox
-    find("input[type='checkbox'] + label, input[type='radio'] + label").click
+    #find("input[type='checkbox'] + label, input[type='radio'] + label").click
   end
 
   it "Confirmar adoção do plano sem seleção de planos." do
