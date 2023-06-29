@@ -28,8 +28,6 @@ RSpec.describe "Testes de Adicionar Cliente", type: :feature do
     fill_in "Mobile Number", with: "85998432870"
 
     click_button "Submit"
-
-    sleep(3)
   end
 
   it "Adicionar um cliente sem preencher o campo FirstName e LastName" do
@@ -46,8 +44,6 @@ RSpec.describe "Testes de Adicionar Cliente", type: :feature do
 
     click_button "Submit"
 
-    sleep(3)
-
     alert = page.driver.browser.switch_to.alert
     expect(alert.text).to eq("please fill all fields")
     alert.accept
@@ -61,8 +57,6 @@ RSpec.describe "Testes de Adicionar Cliente", type: :feature do
     find(:css, '.\32u:nth-child(1) > label').click
 
     click_button "Submit"
-
-    sleep(3)
 
     alert = page.driver.browser.switch_to.alert
     expect(alert.text).to eq("please fill all fields")
@@ -99,6 +93,8 @@ RSpec.describe "Testes de Adicionar Cliente", type: :feature do
     expect(find_field("Enter your address").value).to eq(initial_values["Enter your address"])
     expect(find_field("Mobile Number").value).to eq(initial_values["Mobile Number"])
 
-    sleep(2)
+    click_button "Submit"
+
+    puts "O formulário foi resetado com sucesso."
   end
 end
