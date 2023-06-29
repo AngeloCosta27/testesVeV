@@ -13,7 +13,7 @@ RSpec.configure do |config|
 end
 
 RSpec.describe "Teste de Adicionar Plano Personalizado", type: :feature do
-  it "Preencher os campos corretamente" do
+  it "Adicionar tarifas corretamente" do
     visit "https://demo.guru99.com/telecom/index.html"
     expect(page).to have_content("Add Tariff Plan")
     click_link "Add Tariff Plan"
@@ -34,7 +34,7 @@ RSpec.describe "Teste de Adicionar Plano Personalizado", type: :feature do
     sleep (5)
   end
 
-  it "Preencher os campos obrigatórios com caracteres" do
+  it "Adicionar Tarefas incorretamente(Caracteres)" do
     visit "https://demo.guru99.com/telecom/index.html"
     expect(page).to have_content("Add Tariff Plan")
     click_link "Add Tariff Plan"
@@ -52,7 +52,7 @@ RSpec.describe "Teste de Adicionar Plano Personalizado", type: :feature do
     click_button "submit"
   end
 
-  it "Preencher os campos corretamente e retornar o máximo de caracteres permitidos" do
+  it "Limite de valores inseridos nos campos obrigatórios" do
     visit "https://demo.guru99.com/telecom/index.html"
     expect(page).to have_content("Add Tariff Plan")
     click_link "Add Tariff Plan"
@@ -90,7 +90,7 @@ RSpec.describe "Teste de Adicionar Plano Personalizado", type: :feature do
     max_length.each { |field, max| puts "#{field}: #{max.length}" }
   end
 
-  it "Preencher os campos corretamente" do
+  it "Deixar os campos obrigatórios em branco" do
     visit "https://demo.guru99.com/telecom/index.html"
     expect(page).to have_content("Add Tariff Plan")
     click_link "Add Tariff Plan"
