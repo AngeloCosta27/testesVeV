@@ -98,7 +98,11 @@ RSpec.describe "Teste de Adicionar Plano Personalizado", type: :feature do
     click_button "submit"
 
     alert = page.driver.browser.switch_to.alert
-    expect(alert.text).to eq("please fill all fields Correct Value")
-    alert.accept
+    if alert.text == "please fill all fields Correct Value"
+      alert.accept
+      puts "Teste passou."
+    else
+      fail "Teste falhou."
+    end
   end
 end
